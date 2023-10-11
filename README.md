@@ -29,9 +29,14 @@ To summarize the steps and explanations in the notebook:
 7. Perform the desired queries on your data.
 
 ## Usage instructions
+Update the notebook to include your keys and change the example queries or dataset as desired.
+
+
 
 Example Queries:
-
+.with_near_text({"concepts": ["semantic search"]})
+.with_near_text({"concepts": ["generative ai"]})
+.with_near_text({"concepts": ["machine learning"]})
 
 
 ## Dataset license
