@@ -34,9 +34,9 @@ Update the notebook to include your keys and change the example queries or datas
 
 
 Example Queries:
-.with_near_text({"concepts": ["semantic search"]})
-.with_near_text({"concepts": ["generative ai"]})
-.with_near_text({"concepts": ["machine learning"]})
+1.  .with_near_text({"concepts": ["semantic search"]})
+2.  .with_near_text({"concepts": ["generative ai"]})
+3.  .with_near_text({"concepts": ["machine learning"]})
 
 
 ## Dataset license
