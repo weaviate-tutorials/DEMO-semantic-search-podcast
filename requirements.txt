@@ -1,0 +1,4 @@
+python==3.11.5
+weaviate
+weaviate.util
+json

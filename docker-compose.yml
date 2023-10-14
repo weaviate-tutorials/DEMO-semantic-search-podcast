@@ -2,45 +2,17 @@
 version: '3.4'
 services:
   weaviate:
-<<<<<<< HEAD
-    image: semitechnologies/weaviate:1.21.5
-    restart: on-failure:0
-    ports:
-     - "8080:8080"
-=======
-    command:
-      - --host
-      - 0.0.0.0
-      - --port
-      - '8080'
-      - --scheme
-      - http
-      - --read-timeout
-      - '10000s'
-      - --write-timeout
-      - '10000s'
     image: semitechnologies/weaviate:1.21.5
     restart: on-failure:0
     ports:
       - "8080:8080"
->>>>>>> d1147d6 (Edited notebook to include an example connecting to the server with docker)
     environment:
       QUERY_DEFAULTS_LIMIT: 20
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
       PERSISTENCE_DATA_PATH: "./data"
-<<<<<<< HEAD
       ENABLE_MODULES: text2vec-openai
       DEFAULT_VECTORIZER_MODULE: text2vec-openai
-      OPENAI_APIKEY: sk-foobar  # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
-      OPENAI_ORGANIZATION: your-orgname  # For use with OpenAI. Setting this parameter is optional; you can also provide the key at runtime.
-      AZURE_APIKEY: sk-foobar  # For use with Azure OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      OPENAI_APIKEY: sk-foobar # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      OPENAI_ORGANIZATION: your-orgname # For use with OpenAI. Setting this parameter is optional; you can also provide the key at runtime.
+      AZURE_APIKEY: sk-foobar # For use with Azure OpenAI. Setting this parameter is optional; you can also provide the key at query time.
       CLUSTER_HOSTNAME: 'node1'
-=======
-      DEFAULT_VECTORIZER_MODULE: text2vec-transformers
-      ENABLE_MODULES: text2vec-transformers
-      TRANSFORMERS_INFERENCE_API: http://t2v-transformers:8080
-  t2v-transformers:
-    image: semitechnologies/transformers-inference:sentence-transformers-msmarco-distilroberta-base-v2
-    environment:
-      ENABLE_CUDA: 0
->>>>>>> d1147d6 (Edited notebook to include an example connecting to the server with docker)
