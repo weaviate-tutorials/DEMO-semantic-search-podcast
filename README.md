@@ -1,11 +1,12 @@
-# Semantic search on podcast transcripts
+# Semantic search on podcast transcripts using Weaviate Docker
 This project's origin is [here](https://github.com/weaviate/weaviate-examples/tree/main/podcast-semantic).
 
-In this tutorial we connect to Weaviate using an embedded instance. A database server is launched from the client instantiation call.
+In this tutorial we create a vector store that can be queried using semantic search on a sample dataset composed of transcribed podcasts. The steps will include uploading the data file from a local store, and creating a schema as well as an object store.
 
 (TODO: Add demo video)
 
 We will implement semantic search with text2vec_openai's vectorization module. 
+
 nearText is used to retrieve query results based on the distance between their vectors. Refer to the [nearText documentation](https://weaviate.io/developers/weaviate/api/graphql/search-operators#neartext) to customize your variable setup.
 
 If you have GPU, you may want to consider using the text2vec-transformer module instead. 
@@ -19,18 +20,23 @@ Refer to the instructions [here](https://weaviate.io/developers/weaviate/install
 You only need to install the Weaviate client using “pip install weaviate_client==3.24.1” in your terminal. 
 
 ## Steps
-To summarize the steps and explanations in the notebook:
-1. Connect to your instance using your API keys for OpenAI, Cohere, or Huggingface
-2. Create the schema for your data. Note, this step requires your data to already be formatted and ready for importing by keys or column headers.
-3. Load in the data from your local data drive.
-4. Define the object, its configurations and batch sizes.
-5. Import your object/s as defined.
-6. Specify your nearText setup.
-7. Perform the desired queries on your data.
+1. Fork and clone this repository using git clone in your terminal. 
+2. Update the .yml file with your API keys for OpenAI, Cohere, or Huggingface
+3. Run your virtual environment 
+    - Anaconda: conda activate myenv where myenv can be the name or the path, or
+    - Python: source bin/activate
+4. Use docker-compose up -d to run the .yml file
+5. Run data_import.py file
+6. Edit the query.py file to view the results for modified queries.
 
 ## Usage instructions
 Update the notebook to include your keys and change the example queries or dataset as desired.
 
+1. Create the schema for your data. Note, this step requires your data to already be formatted and ready for importing by keys or column headers.
+2. Load in the data from your local data drive.
+3. Define the object, its configurations and batch sizes.
+4. Import your object/s as defined.
+5. Perform the desired queries on your data.
 
 
 Example Queries:

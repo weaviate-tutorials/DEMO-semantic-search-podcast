@@ -42,10 +42,9 @@ client.schema.create(schema)
 """In the following we load the locally stored data (in json format) and create a function definition for an add_podcast object. 
 
 The name of the object represents the highest level classification for your data, indicated below as podcast_object (in dictionary type). Target class represents the next level in the classification of your data. Here we indicate it below as the string "Podcast", but note that multiple classes could have been specified, for example, if we had different categories of podcasts, such as English, Spanish, etc.
+"""
 
-The function definition below is implementing batch_size=1. Note that with larger amounts of data you will want to adjust this setting. Per the documentation: "batch imports are used to maximize import speed and minimize network latency. Batch import processes multiple objects per request, and clients can parallelize the process."""
-
-
+#Load your data
 with open("data/podcast_ds.json", 'r') as f: 
     datastore = json.load(f)
 
@@ -53,7 +52,10 @@ print(json.dumps(datastore, indent=2))
 
 
 """In the cell below we define the batch and the uuid.
-Batch definition is helpful because it's "a way of importing/creating objects and references in bulk using a single API request to the Weaviate server."""   
+Batch definition is helpful because it's "a way of importing/creating objects and references in bulk using a single API request to the Weaviate server.
+
+
+The function definition below is implementing batch_size=50. Note that with larger amounts of data you will want to adjust this setting. Per the documentation: "batch imports are used to maximize import speed and minimize network latency. Batch import processes multiple objects per request, and clients can parallelize the process."""   
 
 def add_podcasts(batch_size = 50):
     client.batch.configure(batch_size=1)

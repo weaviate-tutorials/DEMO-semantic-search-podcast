@@ -3,14 +3,15 @@ import datetime
 
 def generate_uuid(class_name: str, identifier: str,
                   test: str = 'teststrong') -> str:
-    """ Generate a uuid based on an identifier
+    """ Generate a deterministic uuid to prevent duplicates
     :param identifier: characters used to generate the uuid
     :type identifier: str, required
     :param class_name: classname of the object to create a uuid for
     :type class_name: str, required
     """
     test = 'overwritten'
-    return str(uuid.uuid5(uuid.NAMESPACE_DNS, class_name + identifier))
+    podcast_uuid = generate_uuid5('podcast', d["title"] + d["transcript"])
+    return
 
 def log(i: str) -> str:
     """ A simple logger
