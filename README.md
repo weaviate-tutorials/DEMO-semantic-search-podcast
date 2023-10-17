@@ -14,10 +14,10 @@ If you have GPU, you may want to consider using the text2vec-transformer module 
 
 ## Setup
 ### Weaviate is not installed: 
-Refer to the instructions [here](https://weaviate.io/developers/weaviate/installation). You will need to clone and run it on your computer using docker.
+Refer to the instructions [here](https://weaviate.io/developers/weaviate/installation). To summarize, start or create a virtual environment, clone the git repository and run the .yaml file using docker.
 
 ### Weaviate is already installed:
-You only need to install the Weaviate client using “pip install weaviate_client==3.24.1” in your terminal. 
+Ensure that you have the Weaviate client using “pip install weaviate_client==3.24.1” in your terminal. 
 
 ## Steps
 1. Fork and clone this repository using git clone in your terminal. 

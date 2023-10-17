@@ -12,7 +12,6 @@ services:
       PERSISTENCE_DATA_PATH: "./data"
       ENABLE_MODULES: text2vec-openai
       DEFAULT_VECTORIZER_MODULE: text2vec-openai
-      OPENAI_APIKEY: sk-foobar # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
-      OPENAI_ORGANIZATION: your-orgname # For use with OpenAI. Setting this parameter is optional; you can also provide the key at runtime.
-      AZURE_APIKEY: sk-foobar # For use with Azure OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      OPENAI_APIKEY: "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" # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      OPENAI_ORGANIZATION: "org-EizfHUqHTkQw1MOMGpN1la3q" # For use with OpenAI. Setting this parameter is optional; you can also provide the key at runtime.
       CLUSTER_HOSTNAME: 'node1'
