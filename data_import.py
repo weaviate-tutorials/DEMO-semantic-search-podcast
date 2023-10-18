@@ -44,10 +44,11 @@ The name of the object represents the highest level classification for your data
 """
 
 # Load your data
-with open("data/podcast_ds.json", 'r') as f:
+with open("data/podcast_ds2.json", 'r') as f:
     datastore = json.load(f)
 
-print(json.dumps(datastore, indent=2))
+reduc_datastore = datastore[0:2]
+# print(json.dumps(reduc_datastore[0], indent=2))
 
 
 """In the cell below we define the batch and the uuid.
@@ -60,7 +61,7 @@ The function definition below is implementing batch_size=50. Note that with larg
 def add_podcasts(batch_size=50):
     client.batch.configure(batch_size=1)
     with client.batch as batch:
-        for i, d in enumerate(datastore):
+        for i, d in enumerate(reduc_datastore):
             print(f"importing podcast: {i+1}")
             properties = {
                 "title": d["title"],

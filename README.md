@@ -5,29 +5,26 @@ In this tutorial we create a vector store that can be queried using semantic sea
 
 (TODO: Add demo video)
 
-We will implement semantic search with text2vec_openai's vectorization module. 
+We will implement semantic search with the text2vec_openai vectorization module and the text-embedding-ada-002 model.
 
-nearText is used to retrieve query results based on the distance between their vectors. Refer to the [nearText documentation](https://weaviate.io/developers/weaviate/api/graphql/search-operators#neartext) to customize your variable setup.
-
-If you have GPU, you may want to consider using the text2vec-transformer module instead. 
-[text2vec-transformer](https://weaviate.io/developers/weaviate/current/retriever-vectorizer-modules/text2vec-transformers.html#pre-built-images): 
+nearText is used to retrieve query results based on the cosine distance between their vectors. Refer to the [nearText documentation](https://weaviate.io/developers/weaviate/api/graphql/search-operators#neartext) to customize your variable setup.
+ 
 
 ## Setup
 ### Weaviate is not installed: 
-Refer to the instructions [here](https://weaviate.io/developers/weaviate/installation). To summarize, start or create a virtual environment, clone the git repository and run the .yaml file using docker.
+Refer to the instructions [here](https://weaviate.io/developers/weaviate/installation). To summarize, start or create a virtual environment, clone the git repository and run the .yml file using docker.
 
 ### Weaviate is already installed:
-Ensure that you have the Weaviate client using “pip install weaviate_client==3.24.1” in your terminal. 
+Ensure that you have the Weaviate client using “pip install weaviate_client” in your terminal. 
 
-## Steps
-1. Fork and clone this repository using git clone in your terminal. 
-2. Update the .yml file with your API keys for OpenAI, Cohere, or Huggingface
-3. Run your virtual environment 
+## Steps 
+1. Run your virtual environment 
     - Anaconda: conda activate myenv where myenv can be the name or the path, or
     - Python: source bin/activate
-4. Use docker-compose up -d to run the .yml file
-5. Run data_import.py file
-6. Edit the query.py file to view the results for modified queries.
+2. Fork and clone this repository using git clone in your terminal.
+3. Use docker-compose up -d to run the .yml file
+4. Run the requirements.txt file
+6. Edit and run the query.py file to view the results for modified queries.
 
 ## Usage instructions
 Update the notebook to include your keys and change the example queries or dataset as desired.
@@ -47,3 +44,4 @@ Example Queries:
 
 ## Dataset license
 300 Podcast transcripts from [Changelog](https://github.com/thechangelog/transcripts)  
+The file podcast_ds2.json was used for the tutorial. Given the api rate limits and cost to run the queries, the first four records were cut to less than half their length and used to test. It is advisable to use shorter summaries when using text2vec_openai on your own data.

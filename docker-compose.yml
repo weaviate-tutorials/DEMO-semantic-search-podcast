@@ -2,7 +2,7 @@
 version: '3.4'
 services:
   weaviate:
-    image: semitechnologies/weaviate:1.21.5
+    image: semitechnologies/weaviate:1.21.7
     restart: on-failure:0
     ports:
       - "8080:8080"
@@ -12,6 +12,8 @@ services:
       PERSISTENCE_DATA_PATH: "./data"
       ENABLE_MODULES: text2vec-openai
       DEFAULT_VECTORIZER_MODULE: text2vec-openai
-      OPENAI_APIKEY: "enter your key" # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
-      OPENAI_ORGANIZATION: "enter your organization name or key" # For use with OpenAI. Setting this parameter is optional; you can also provide the key at runtime.
+      OPENAI_APIKEY: your-key # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      OPENAI_ORGANIZATION: your-org-key # For use with OpenAI. Enter your organization key.
+      AZURE_APIKEY: sk-foobar # For use with Azure OpenAI. Setting this parameter is optional; you can also provide the key at query time.
       CLUSTER_HOSTNAME: 'node1'
+...
