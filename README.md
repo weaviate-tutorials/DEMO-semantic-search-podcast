@@ -1,55 +1,48 @@
-# Semantic search on podcast transcripts
+# Semantic search on podcast transcripts using Weaviate Docker
 This project's origin is [here](https://github.com/weaviate/weaviate-examples/tree/main/podcast-semantic).
 
-(TODO: Add Description)
+In this tutorial we create a vector store that can be queried using semantic search on a sample dataset composed of transcribed podcasts. The steps will include uploading the data file from a local store, and creating a schema as well as an object store.
 
 (TODO: Add demo video)
 
-[Vectorization module](https://weaviate.io/developers/weaviate/current/retriever-vectorizer-modules/text2vec-transformers.html#pre-built-images): [`sentence-transformers/msmarco-distilroberta-base-v2`](https://huggingface.co/sentence-transformers/msmarco-distilroberta-base-v2)
+We will implement semantic search with the text2vec_transformers vectorization module that uses the msmarco-distilroberta-base-v2 model.
 
-## Prerequisites
-(TO DO)
-
-## Setup instructions
-1. Set-up  Weaviate: `docker-compose up -d`*
-2. Install Weaviate client: `pip install weaviate_client==3.2.2`
-3. Import data: `python3 import.py`**
-4. Query data: Go to [console.semi.technology](https://console.semi.technology/) on Chrome/Safari and connect to http://localhost:9999. Click on Query Module to start querying using GraphQL
+nearText is used to retrieve query results based on the cosine distance between their vectors. Refer to the [nearText documentation](https://weaviate.io/developers/weaviate/api/graphql/search-operators#neartext) to customize your variable setup.
  
-*Change port `9999` in `docker-compose.yml`  and `import.py` to a different value (like 8888), if not able to connect  
-**Could take up to 3 hrs 🙂
+
+## Setup
+### Weaviate is not installed: 
+Refer to the instructions [here](https://weaviate.io/developers/weaviate/installation). To summarize, start or create a virtual environment, clone the git repository and run the .yml file using docker.
+
+### Weaviate is already installed:
+Ensure that you have the Weaviate client using “pip install weaviate_client” in your terminal. 
+
+## Steps 
+1. Run your virtual environment 
+    - Anaconda: conda activate myenv where myenv can be the name or the path, or
+    - Python: source bin/activate
+2. Fork and clone this repository using git clone in your terminal.
+3. Use docker-compose up -d to run the .yml file
+4. Run the requirements.txt file
+5. Run the import.py file
+6. Edit and run the query.py file to view the results for modified queries.
 
 ## Usage instructions
+Update the notebook to include your keys and change the example queries or dataset as desired.
+
+1. Create the schema for your data. Note, this step requires your data to already be formatted and ready for importing by keys or column headers.
+2. Load in the data from your local data drive.
+3. Define the object, its configurations and batch sizes.
+4. Import your object/s as defined.
+5. Perform the desired queries on your data.
+
 
 Example Queries:
-
-Suppose we want to listen to some Changelog episodes discussing GraphQL. We can list the desired episode titles (and transcripts too) via `nearText` for the concept `Episode about graphql`:  
-
-![Screenshot 2022-03-29 191123](https://user-images.githubusercontent.com/72981484/160694464-38a49b47-cd8f-4492-ae25-1cffaa7d85c2.jpg)  
-
-The Changelog #255 is [Why is GraphQL so cool?](https://changelog.com/podcast/255)  
-The Changelog #297 is [Prisma and the GraphQL data layer](https://changelog.com/podcast/297)  
-The Changelog #316 is [REST easy, GraphQL is here](https://changelog.com/podcast/316)  
-
-Well, that was quite simple. In fact, a podcast search engine could have provided the same results.  
-So how about we list some episodes about web development but in the context of Python and not Javascript.  
-In addition to `nearText` for the concept of `Episode about web development`, we'll also add `moveTo` (for python) and `moveAwayFrom` (for javascript) arguements:  
-
-<img width="847" alt="image" src="https://user-images.githubusercontent.com/72981484/160699867-c3ef3f3b-8eaf-4867-aac7-ac2bc2ec0282.png">  
-
-The Changelog #301 is [Python at Microsoft](https://changelog.com/podcast/301)  
-The Changelog #229 is [Python, Django, and Channels](https://changelog.com/podcast/229)  
-
-Let's say that listening to the GraphQL and Python episodes has inspired us to create a Machine Learning startup. Thus we would now like to listen to CEOs and Founders but in the field of Machine Learning or Data Science instead of vanilla Web Development:  
-
-![aiCeo](https://user-images.githubusercontent.com/72981484/160701102-66ae4f12-e004-447e-acb0-594b4e6309f2.jpg)  
- 
-The Practical AI #149 is [Trends in data labeling](https://changelog.com/practicalai/149) (With CEO of Label Studio)   
-The Changelog #305 is [Putting AI in a box at MachineBox](https://changelog.com/podcast/305) (With founders of MachineBox)  
-The Practical AI #134 is [Apache TVM and OctoML](https://changelog.com/practicalai/134) (With CEO and co-founder of OctoML )  
-The Practical AI #148 is [Stellar inference speed via AutoNAS](https://changelog.com/practicalai/148) (With CEO and co-founder of Deci)  
-The Practical AI #141 is [Towards stability and robustness](https://changelog.com/practicalai/141) (With CTO of BeyondMinds)  
+1.  .with_near_text({"concepts": ["semantic search"]})
+2.  .with_near_text({"concepts": ["generative ai"]})
+3.  .with_near_text({"concepts": ["machine learning"]})
 
 
 ## Dataset license
 300 Podcast transcripts from [Changelog](https://github.com/thechangelog/transcripts)  
+The file podcast.json was used for the tutorial. 
