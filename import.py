@@ -3,6 +3,7 @@
 import weaviate
 from weaviate.util import generate_uuid5
 import json
+import helper
 
 
 # Instatiate the client with rest API
