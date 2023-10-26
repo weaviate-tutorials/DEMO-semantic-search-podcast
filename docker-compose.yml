@@ -10,10 +10,12 @@ services:
       QUERY_DEFAULTS_LIMIT: 20
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
       PERSISTENCE_DATA_PATH: "./data"
-      ENABLE_MODULES: text2vec-openai
-      DEFAULT_VECTORIZER_MODULE: text2vec-openai
-      OPENAI_APIKEY: your-key # For use with OpenAI. Setting this parameter is optional; you can also provide the key at query time.
-      OPENAI_ORGANIZATION: your-org-key # For use with OpenAI. Enter your organization key.
-      AZURE_APIKEY: sk-foobar # For use with Azure OpenAI. Setting this parameter is optional; you can also provide the key at query time.
+      ENABLE_MODULES: text2vec-transformers
+      DEFAULT_VECTORIZER_MODULE: text2vec-transformers
+      TRANSFORMERS_INFERENCE_API: http://t2v-transformers:8080
+  t2v-transformers:
+    image: semitechnologies/transformers-inference:sentence-transformers-msmarco-distilroberta-base-v2
+    environment:
+      ENABLE_CUDA: 0
       CLUSTER_HOSTNAME: 'node1'
 ...

@@ -5,7 +5,7 @@ In this tutorial we create a vector store that can be queried using semantic sea
 
 (TODO: Add demo video)
 
-We will implement semantic search with the text2vec_openai vectorization module and the text-embedding-ada-002 model.
+We will implement semantic search with the text2vec_transformers vectorization module that uses the msmarco-distilroberta-base-v2 model.
 
 nearText is used to retrieve query results based on the cosine distance between their vectors. Refer to the [nearText documentation](https://weaviate.io/developers/weaviate/api/graphql/search-operators#neartext) to customize your variable setup.
  
@@ -24,6 +24,7 @@ Ensure that you have the Weaviate client using “pip install weaviate_client”
 2. Fork and clone this repository using git clone in your terminal.
 3. Use docker-compose up -d to run the .yml file
 4. Run the requirements.txt file
+5. Run the import.py file
 6. Edit and run the query.py file to view the results for modified queries.
 
 ## Usage instructions
@@ -44,4 +45,4 @@ Example Queries:
 
 ## Dataset license
 300 Podcast transcripts from [Changelog](https://github.com/thechangelog/transcripts)  
-The file podcast_ds2.json was used for the tutorial. Given the api rate limits and cost to run the queries, the first four records were cut to less than half their length and used to test. It is advisable to use shorter summaries when using text2vec_openai on your own data.
+The file podcast.json was used for the tutorial. 
