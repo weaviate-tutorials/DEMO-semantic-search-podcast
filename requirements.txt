@@ -1,0 +1,2 @@
+weaviate_client==3.2.2
+openai-whisper
