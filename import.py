@@ -25,7 +25,7 @@ schema = {
 }
 client.schema.create(schema)
 
-with open("data/podcast_ds.json", 'r') as f:
+with open("data/podcast_ds.json", 'r', encoding="utf-8") as f:
     datastore = json.load(f)
     
 def add_podcasts(batch_size = 1):
