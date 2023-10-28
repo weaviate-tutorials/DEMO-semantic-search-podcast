@@ -1,54 +1,70 @@
 # Semantic search on podcast transcripts
-This project's origin is [here](https://github.com/weaviate/weaviate-examples/tree/main/podcast-semantic).
-
-(TODO: Add Description)
+This project's origin is [here](https://github.com/weaviate/weaviate-examples/tree/main/podcast-semantic). In this project, we will be using Weaviate to perform semantic search on podcast transcripts. We will be using the OpenAI text2vec transformer module to vectorize the text. Once the complete data is vectorized and stored, we will be able to perform semantic search on the data.
 
 (TODO: Add demo video)
 
-[Vectorization module](https://weaviate.io/developers/weaviate/current/retriever-vectorizer-modules/text2vec-transformers.html#pre-built-images): [`sentence-transformers/msmarco-distilroberta-base-v2`](https://huggingface.co/sentence-transformers/msmarco-distilroberta-base-v2)
-
 ## Prerequisites
-(TO DO)
+Before you can run the project, you need to have Docker, Docker Compose, and Python installed on your machine. Follow the instructions below to install the prerequisites:
+
+### 1. Install Docker:
+   - **For Windows and Mac**:
+      - Download and install Docker Desktop from [Docker's official website](https://www.docker.com/products/docker-desktop).
+   - **For Linux**:
+      - Run the following commands in your terminal:
+        ```bash
+        sudo apt-get update
+        sudo apt-get install docker-ce docker-ce-cli containerd.io
+        ```
+
+### 2. Install Docker Compose:
+   - **For Windows and Mac**:
+      - Docker Compose is included with Docker Desktop.
+   - **For Linux**:
+      - Run the following command in your terminal:
+        ```bash
+        sudo apt install docker-compose
+        ```
+
+### 3. Install Python:
+   - Download and install the latest version of Python from [Python's official website](https://www.python.org/downloads/).
+   - Verify the installation by running the following command in your terminal:
+     ```bash
+     python --version
+     ```
 
 ## Setup instructions
-1. Set-up  Weaviate: `docker-compose up -d`*
-2. Install Weaviate client: `pip install weaviate_client==3.2.2`
-3. Import data: `python3 import.py`**
-4. Query data: Go to [console.semi.technology](https://console.semi.technology/) on Chrome/Safari and connect to http://localhost:9999. Click on Query Module to start querying using GraphQL
- 
-*Change port `9999` in `docker-compose.yml`  and `import.py` to a different value (like 8888), if not able to connect  
-**Could take up to 3 hrs 🙂
+1. **Install virtualenv** (if not already installed):
+   ```bash
+   pip install virtualenv
+   ```
+2. **Create a Virtual Environment:** 
+   Navigate to the directory where you want to create your virtual environment, then run:
+   ```bash
+   virtualenv <name_of_virtualenv>
+   ```
+3. **Activate the Virtual Environment:** 
+   On Windows, run:
+   ```bash
+   .\<name_of_virtualenv>\Scripts\activate
+   ```
+   On macOS and Linux, run:
+   ```bash
+   source <name_of_virtualenv>/bin/activate
+   ```
+4. **Install Python requirements:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Export OpenAI API Key:
+    ```bash
+    export OPENAI_APIKEY=<your_openai_api_key>
+    ```
 
 ## Usage instructions
-
-Example Queries:
-
-Suppose we want to listen to some Changelog episodes discussing GraphQL. We can list the desired episode titles (and transcripts too) via `nearText` for the concept `Episode about graphql`:  
-
-![Screenshot 2022-03-29 191123](https://user-images.githubusercontent.com/72981484/160694464-38a49b47-cd8f-4492-ae25-1cffaa7d85c2.jpg)  
-
-The Changelog #255 is [Why is GraphQL so cool?](https://changelog.com/podcast/255)  
-The Changelog #297 is [Prisma and the GraphQL data layer](https://changelog.com/podcast/297)  
-The Changelog #316 is [REST easy, GraphQL is here](https://changelog.com/podcast/316)  
-
-Well, that was quite simple. In fact, a podcast search engine could have provided the same results.  
-So how about we list some episodes about web development but in the context of Python and not Javascript.  
-In addition to `nearText` for the concept of `Episode about web development`, we'll also add `moveTo` (for python) and `moveAwayFrom` (for javascript) arguements:  
-
-<img width="847" alt="image" src="https://user-images.githubusercontent.com/72981484/160699867-c3ef3f3b-8eaf-4867-aac7-ac2bc2ec0282.png">  
-
-The Changelog #301 is [Python at Microsoft](https://changelog.com/podcast/301)  
-The Changelog #229 is [Python, Django, and Channels](https://changelog.com/podcast/229)  
-
-Let's say that listening to the GraphQL and Python episodes has inspired us to create a Machine Learning startup. Thus we would now like to listen to CEOs and Founders but in the field of Machine Learning or Data Science instead of vanilla Web Development:  
-
-![aiCeo](https://user-images.githubusercontent.com/72981484/160701102-66ae4f12-e004-447e-acb0-594b4e6309f2.jpg)  
- 
-The Practical AI #149 is [Trends in data labeling](https://changelog.com/practicalai/149) (With CEO of Label Studio)   
-The Changelog #305 is [Putting AI in a box at MachineBox](https://changelog.com/podcast/305) (With founders of MachineBox)  
-The Practical AI #134 is [Apache TVM and OctoML](https://changelog.com/practicalai/134) (With CEO and co-founder of OctoML )  
-The Practical AI #148 is [Stellar inference speed via AutoNAS](https://changelog.com/practicalai/148) (With CEO and co-founder of Deci)  
-The Practical AI #141 is [Towards stability and robustness](https://changelog.com/practicalai/141) (With CTO of BeyondMinds)  
+1. Start up Weaviate: `docker-compose up -d`. Once completed, Weaviate is running on [`http://localhost:8080`]().
+2. Run `python import.py` to import the transcripts into Weaviate.
+3. The data is now stored in the Weaviate instance. You can experiment with it using a python notebook or a python file.
 
 
 ## Dataset license
