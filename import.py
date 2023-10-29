@@ -1,6 +1,7 @@
 import weaviate
 import json
 import helper
+from tqdm import tqdm
 
 client = weaviate.Client("http://localhost:9999")
 client.timeout_config = (10000) 
@@ -30,7 +31,7 @@ with open("data/podcast_ds.json", 'r', encoding="utf-8") as f:
     
 def add_podcasts(batch_size = 1):
     no_items_in_batch = 0
-    for item in datastore:
+    for item in tqdm(datastore):
         podcast_object = {
             "title": item["title"],
             "transcript": item["transcript"]
