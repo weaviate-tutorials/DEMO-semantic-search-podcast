@@ -32,7 +32,8 @@ with open("data/podcast_ds.json", 'r', encoding="utf-8") as f:
 def add_podcasts(batch_size = 1):
     no_items_in_batch = 0
     with helper.std_out_err_redirect_tqdm() as orig_stdout:
-        for item in tqdm(datastore, desc="Importing transcripts", file=orig_stdout):
+        for item in tqdm(datastore, desc="Importing transcripts", 
+                file=orig_stdout, unit="transcript"):
             podcast_object = {
                 "title": item["title"],
                 "transcript": item["transcript"]
