@@ -2,16 +2,13 @@ import weaviate
 from weaviate import Config
 import weaviate.classes as wvc
 import json
-import os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Starting up the weaviate client
 client = weaviate.Client(
     "http://localhost:8080",
     additional_config=Config(grpc_port_experimental=50051),
-    additional_headers={
-        "X-OpenAI-Api-Key": os.environ["OPENAI_APIKEY"],  # Replace with your key
-    },
+    # timeout_config = (100000, 100000)
 )
 
 print(client.collection.delete("Podcast"))
@@ -29,13 +26,13 @@ client.collection.create(
             data_type=wvc.DataType.TEXT,
         )
     ],
-    vectorizer_config=wvc.ConfigFactory.Vectorizer.text2vec_openai()
+    vectorizer_config=wvc.ConfigFactory.Vectorizer.text2vec_transformers()
 )
 
 # Checking if the collection is created successfully
 print(client.collection.exists("Podcast"))
 
-with open("./data/podcast_ds.json", 'r') as f:
+with open("./data/podcast_ds.json", 'r', encoding="utf-8") as f:
     datastore = json.load(f)
 
 podcast = client.collection.get("Podcast")
@@ -49,7 +46,6 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 transcripts_to_add = []
 
-#Chunking the data as the transcripts are too long and won't give good performance for semantic search
 for data in datastore:
     chunked_transcript = text_splitter.create_documents([data["transcript"]])
     for chunk in chunked_transcript:
