@@ -3,3 +3,4 @@ pandas==2.1.1
 grpcio==1.59.0
 grpcio-tools==1.59.0
 weaviate-client @ git+https://github.com/weaviate/weaviate-python-client.git@6f81104a81f8a48e31a1467a8c75e85053e20f77
+tqdm
