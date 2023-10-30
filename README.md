@@ -12,7 +12,7 @@ This project's origin is [here](https://github.com/weaviate/weaviate-examples/tr
 
 ## Setup instructions
 1. Set-up  Weaviate: `docker-compose up -d`*
-2. Install Weaviate client: `pip install weaviate_client==3.2.2`
+2. Install depenencies: `pip install -r requirements.txt`
 3. Import data: `python3 import.py`**
 4. Query data: Go to [console.semi.technology](https://console.semi.technology/) on Chrome/Safari and connect to http://localhost:9999. Click on Query Module to start querying using GraphQL
  
