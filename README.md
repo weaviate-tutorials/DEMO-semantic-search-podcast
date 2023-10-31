@@ -1,6 +1,8 @@
 # Semantic search on podcast transcripts
 This project's origin is [here](https://github.com/weaviate/weaviate-examples/tree/main/podcast-semantic). In this project, we will be using Weaviate to perform semantic search on podcast transcripts. We will be using the OpenAI text2vec transformer module to vectorize the text. Once the complete data is vectorized and stored, we will be able to perform semantic search on the data.
 
+[Vectorization module](https://weaviate.io/developers/weaviate/current/retriever-vectorizer-modules/text2vec-transformers.html#pre-built-images): [`sentence-transformers/multi-qa-distilbert-cos-v1`](https://huggingface.co/sentence-transformers/multi-qa-distilbert-cos-v1)
+
 (TODO: Add demo video)
 
 ## Prerequisites
